@@ -4,10 +4,10 @@ import { Route, Routes } from 'react-router-dom'
 import { Header } from 'components/Header'
 import { Footer } from 'components/Footer'
 import { NotFoundPage } from 'pages/NotFoundPage'
+import {Home} from "./pages/Home";
 
 import './scss/main.scss'
 
-const Home = () => <h2>Home</h2>
 const About = () => <h2>About</h2>
 
 function App() {
