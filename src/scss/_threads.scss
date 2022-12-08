@@ -12,3 +12,20 @@
     margin-bottom: 1rem;
   }
 }
+
+.Badge {
+  display: flex;
+  align-items: center;
+  // -
+  max-width: 80px;
+  max-height: 30px;
+  padding: 10px;
+  // -
+  user-select: none;
+  background: var(--ui-primary-color);
+  color: var(--ui-inverse-color);
+  border-radius: 12px;
+  svg {
+    cursor: pointer;
+  }
+}

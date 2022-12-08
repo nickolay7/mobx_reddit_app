@@ -1,6 +1,8 @@
 import React from 'react';
 import {ReactComponent as UserIcon} from "assets/img/user.svg";
 import {ReactComponent as MessageIcon} from "assets/img/message.svg";
+import { ReactComponent as UpIcon } from 'assets/img/chevron-up.svg'
+import { ReactComponent as DownIcon } from 'assets/img/chevron-down.svg'
 import {Thread} from "types";
 
 interface ThreadProps {
@@ -8,16 +10,18 @@ interface ThreadProps {
 }
 
 export const ThreadItem = ({
-                      thread: {
-                        id,
-                        comments,
-                        url,
-                        thumbnail: {src, width, height},
-                        title,
-                        score,
-                        author
-                      }
-                    }: ThreadProps) => {
+                             thread: {
+                               id,
+                               comments,
+                               url,
+                               thumbnail: {src, width, height},
+                               title,
+                               score,
+                               author
+                             }
+                           }: ThreadProps) => {
+  const doSome = (to: string, id: string) => {}
+
   return (
     <div>
       <div key={id} className='TreadItem'>
@@ -52,6 +56,17 @@ export const ThreadItem = ({
               {comments} comments
             </p>
           </div>
+          <span className='Badge'>
+            <UpIcon
+              className='mr-1'
+              onClick={() => doSome('up', id)}
+            />
+              {score}
+            <DownIcon
+              className='ml-1'
+              onClick={() => doSome('down', id)}
+            />
+          </span>
         </div>
       </div>
     </div>

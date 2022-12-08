@@ -5,6 +5,7 @@ import {Status} from "types";
 import {Loader} from "components/Loader";
 import {ThreadsList} from "components/Threads";
 import {useEffect} from "react";
+import {Tags} from "components/Tags";
 
 export const Home = observer(() => {
   useEffect(() => {
@@ -24,6 +25,7 @@ export const Home = observer(() => {
 
   return (
       <div className='mt-6'>
+        <Tags />
         {renderContent(threadsStore.status)}
       </div>
   );

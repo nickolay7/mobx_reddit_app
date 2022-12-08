@@ -14,7 +14,7 @@ export const Footer = ({ className = '', ...attrs }: FooterProps) => {
   return (
     <footer className={classes} {...attrs}>
       <Container>
-        <div className="flex justify-center">
+        <div className="flex justify-center py-6">
           Footer Component
         </div>
       </Container>
