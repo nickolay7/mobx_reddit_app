@@ -37,7 +37,7 @@ export const Header = ({ className = '', ...attrs }: HeaderProps) => {
   return (
     <header className={classes} {...attrs}>
       <Container>
-        <div className='flex justify-between'>
+        <div className='flex justify-between py-3'>
           <div className="Logo">
             <LogoIcon />
             <span>React template </span>

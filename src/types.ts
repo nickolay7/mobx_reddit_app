@@ -17,4 +17,5 @@ export interface Thread {
   score: string;
   author: string;
   thumbnail: Thumbnail;
+  comments: string;
 }

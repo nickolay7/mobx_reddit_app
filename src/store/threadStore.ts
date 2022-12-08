@@ -16,10 +16,12 @@ class ThreadStore {
 
   async fetchTreads() {
     try {
-      this.status = Status.LOADING;
-      const data = await redditService.get();
-      this.setThreads(data);
-      this.status = Status.SUCCEED;
+      if (!this.threads) {
+        this.status = Status.LOADING;
+        const data = await redditService.get();
+        this.setThreads(data);
+        this.status = Status.SUCCEED;
+      }
     } catch (e: any) {
       this.status = Status.ERROR;
       if (e instanceof Error) {
