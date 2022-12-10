@@ -1,7 +1,15 @@
+import {TagsStore, ThreadStore} from "store";
+
 export enum Status {
   'LOADING' = 'Loading',
   'ERROR' = 'Error',
   'SUCCEED' = 'Succeed'
+}
+
+export enum Tag {
+  'REACT' = 'react',
+  'ANGULAR' = 'angular',
+  'VUE' = 'vue'
 }
 
 interface Thumbnail {
@@ -18,4 +26,9 @@ export interface Thread {
   author: string;
   thumbnail: Thumbnail;
   comments: string;
+}
+
+export interface Store {
+  tagsStore: TagsStore | null;
+  threadsStore: ThreadStore | null;
 }

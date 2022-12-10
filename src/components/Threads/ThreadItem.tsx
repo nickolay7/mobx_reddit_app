@@ -1,15 +1,18 @@
 import React from 'react';
+import {observer} from "mobx-react-lite";
+import {Thread} from "types";
+
 import {ReactComponent as UserIcon} from "assets/img/user.svg";
 import {ReactComponent as MessageIcon} from "assets/img/message.svg";
 import { ReactComponent as UpIcon } from 'assets/img/chevron-up.svg'
 import { ReactComponent as DownIcon } from 'assets/img/chevron-down.svg'
-import {Thread} from "types";
+import {useStores} from "store";
 
 interface ThreadProps {
   thread: Thread;
 }
 
-export const ThreadItem = ({
+export const ThreadItem = observer(({
                              thread: {
                                id,
                                comments,
@@ -20,7 +23,12 @@ export const ThreadItem = ({
                                author
                              }
                            }: ThreadProps) => {
-  const doSome = (to: string, id: string) => {}
+  const { threadsStore } = useStores();
+  const doSome = (direct: string, id: string) => {
+    threadsStore.setScore(direct, id);
+  }
+
+  const observableElement = threadsStore.threads && threadsStore.threads.find((item) => item.id === id);
 
   return (
     <div>
@@ -39,7 +47,6 @@ export const ThreadItem = ({
         <a
           className='ui-title-4 ui-link mb-4'
           href={url}
-          target='_blank'
         >
           {Number(score) > 40 && '🔥  '}
           {title}
@@ -61,7 +68,7 @@ export const ThreadItem = ({
               className='mr-1'
               onClick={() => doSome('up', id)}
             />
-              {score}
+              {observableElement?.score}
             <DownIcon
               className='ml-1'
               onClick={() => doSome('down', id)}
@@ -71,4 +78,4 @@ export const ThreadItem = ({
       </div>
     </div>
   );
-};
+});

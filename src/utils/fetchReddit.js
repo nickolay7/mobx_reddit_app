@@ -1,8 +1,9 @@
 import {fetchData} from './fetchData';
+import {Tag} from "types";
 
 export const redditService = {
-  async get() {
-    const res = await fetchData('https://www.reddit.com/r/reactjs.json')
+  async get(tag = Tag.REACT) {
+    const res = await fetchData(`https://www.reddit.com/r/${tag}js.json`)
     const resChildren = res.data.children
     const nextRes = []
 

@@ -1,5 +1,5 @@
 import {observer} from "mobx-react-lite";
-import {threadsStore} from "store";
+import {useStores} from "store";
 import {Status} from "types";
 
 import {Loader} from "components/Loader";
@@ -8,9 +8,11 @@ import {useEffect} from "react";
 import {Tags} from "components/Tags";
 
 export const Home = observer(() => {
+  const { threadsStore } = useStores();
+
   useEffect(() => {
-    threadsStore.fetchTreads();
-  }, []);
+    threadsStore.fetchThreads();
+  }, [threadsStore]);
 
   const renderContent = (status: Status) => {
     switch (status) {
@@ -25,6 +27,7 @@ export const Home = observer(() => {
 
   return (
       <div className='mt-6'>
+        <h1 className='ui-title-3 text-center'>Reddit Threads</h1>
         <Tags />
         {renderContent(threadsStore.status)}
       </div>

@@ -1,8 +1,9 @@
 import React from 'react';
-import {threadsStore} from "store";
 import { ThreadItem } from "./ThreadItem";
+import {useStores} from "../../store";
 
 export const ThreadsList = () => {
+  const { threadsStore } = useStores();
 
   return (
     <div className='ThreadList'>
@@ -10,7 +11,7 @@ export const ThreadsList = () => {
         (threadsStore.threads &&
           threadsStore.threads.length > 0) ?
           threadsStore.threads.map((thread) => (
-            <ThreadItem thread={thread}/>
+            <ThreadItem key={thread.id} thread={thread}/>
           )) : 'threads not found'}
     </div>
   );
